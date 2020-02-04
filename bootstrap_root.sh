@@ -15,7 +15,7 @@ user="neuron"
 # ----------------------------------------
 
 
-packages=( base-devel vim git terminus-font )
+packages=( base-devel git terminus-font )
 
 
 # ----------------------------------------
@@ -41,15 +41,14 @@ function create_user()
     exec_by_condition executable "Do you want to create user '${user}'? Y/n"
 }
 
-function edit_sudoers()
+function setup_sudoers()
 {
-    section "Edit sudoers"
+    section "Setup sudoers"
     function executable()
     {
-	export EDITOR=vim
-	visudo
+	cp --force ./config/sudo/10-sudoers /etc/sudoers.d/
     }
-    exec_by_condition executable "Do you want to edit sudoers file to allow wheel group use sudo? Y/n"
+    exec_by_condition executable "Do you want to copy '10-sudoers' file to the '/etc/sudoers.d/'? Y/n"
 }
 
 function install_terminus_font()
@@ -69,7 +68,7 @@ greeting
 install_packages
 install_terminus_font
 create_user
-edit_sudoers
+setup_sudoers
 bash bs_git.sh
 farewell
 exit 0

@@ -7,7 +7,7 @@ source base.sh
 # ----------------------------------------
 
 
-required_packages=( )
+required_packages=( vim )
 lol_packages=( screenfetch )
 
 packages=( 
