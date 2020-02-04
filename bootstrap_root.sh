@@ -15,7 +15,7 @@ user="neuron"
 # ----------------------------------------
 
 
-packages=( base-devel vi git )
+packages=( base-devel vi git terminus-font )
 
 
 # ----------------------------------------
@@ -51,6 +51,14 @@ function edit_sudoers()
     exec_by_condition executable "Do you want to edit sudoers file to allow wheel group use sudo? Y/n"
 }
 
+function install_terminus_font()
+{
+    section "Terminus console font"
+    setfont /usr/share/kbd/consolefonts/ter-918b.psf.gz
+    echo -e "FONT=ter-918b\n" > /etc/vconsole.conf
+    echo "Terminus font successfully installed"
+}
+
 
 # ----------------------------------------
 # Main
@@ -58,6 +66,7 @@ function edit_sudoers()
 
 greeting
 install_packages
+install_terminus_font
 create_user
 edit_sudoers
 bash bs_git.sh
