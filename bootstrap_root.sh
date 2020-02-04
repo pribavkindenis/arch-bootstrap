@@ -15,7 +15,7 @@ user="neuron"
 # ----------------------------------------
 
 
-packages=( base-devel vi git terminus-font )
+packages=( base-devel vim git terminus-font )
 
 
 # ----------------------------------------
@@ -46,6 +46,7 @@ function edit_sudoers()
     section "Edit sudoers"
     function executable()
     {
+	export EDITOR=vim
 	visudo
     }
     exec_by_condition executable "Do you want to edit sudoers file to allow wheel group use sudo? Y/n"
