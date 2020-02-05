@@ -7,8 +7,20 @@ source base.sh
 # ----------------------------------------
 
 
-required_packages=( vim )
-lol_packages=( screenfetch )
+required_packages=( 
+    vim
+    xorg
+    xorg-xinit
+    lshw
+    ttf-dejavu
+    konsole
+    firefox
+)
+lol_packages=( 
+    screenfetch
+    sl
+    lolcat
+)
 
 packages=( 
     "${required_packages[@]}"
@@ -38,11 +50,14 @@ function install_pikaur()
 function install_packages()
 {
     section "Install packages"
-    pikaur -S --needed "${packages[@]}"
+    function executable()
+    {
+	pikaur -S --needed "${packages[@]}"
+    }
+    exec_by_condition executable "Do you want to install packages? Y/n"
 }
 
 
-# ----------------------------------------
 # Main
 # ----------------------------------------
 
@@ -51,5 +66,6 @@ greeting
 install_pikaur
 install_packages
 bash bs_git.sh
+bash bs_i3.sh
 farewell
 exit 0

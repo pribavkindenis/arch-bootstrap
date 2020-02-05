@@ -51,7 +51,7 @@ function farewell()
 
 function write_border()
 {
-    for i in {1..42}
+    for i in {1..69}
     do 
         echo -n '-'
     done
@@ -66,7 +66,7 @@ function section()
 	section_name=$1
     fi
 
-    echo -e "\n${C_L_GREEN}$(write_border) ${section_name} $(write_border)${C_DEFAULT}\n"
+    echo -e "\n${C_L_GREEN}$(write_border) ${section_name}${C_DEFAULT}\n"
 }
 
 function exec_by_condition()
