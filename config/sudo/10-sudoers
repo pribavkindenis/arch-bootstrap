@@ -1,2 +1,1 @@
 %wheel ALL=(ALL) ALL
-%wheel ALL=(ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/halt,/usr/bin/poweroff

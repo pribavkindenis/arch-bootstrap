@@ -15,7 +15,7 @@ user="neuron"
 # ----------------------------------------
 
 
-packages=( base-devel git terminus-font )
+packages=( base-devel git terminus-font polkit )
 
 
 # ----------------------------------------
