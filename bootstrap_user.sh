@@ -13,8 +13,11 @@ required_packages=(
     xorg-xinit
     lshw
     ttf-dejavu
+    nerd-fonts-fira-code
     konsole
     firefox
+    tree
+    htop
 )
 lol_packages=( 
     screenfetch

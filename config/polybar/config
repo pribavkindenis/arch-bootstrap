@@ -1,0 +1,196 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #1793D1
+secondary = #e60053
+alert = #1793D1
+
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+
+[bar/primary-bar]
+enable-ipc = true
+
+font-0 = FuraCode Nerd Font:size=12;3
+font-1 = FuraCode Nerd Font:size=17;4
+font-2 = FuraCode Nerd Font:size=6;2
+
+line-size = 3
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+width = 100%
+height = 26
+padding = 1
+radius-bottom = 6.0
+bottom = false
+fixed-center = true
+
+module-margin-left = 1
+module-margin-right = 1
+separator = %{F#555}%{T3}%{T-}%{F-}
+
+modules-left = i3
+modules-center = arch-logo
+modules-right = keyboard cpu memory temperature  wired-enp3s0 date time
+
+tray-position = right
+tray-padding = 2
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+label-mode-padding = 1
+
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+
+
+[module/arch-logo]
+type = custom/text
+content = 
+content-font = 2
+content-foreground = #1793D1
+
+
+
+[module/keyboard]
+type = internal/xkeyboard
+format =  <label-layout>
+label-layout = %layout%
+
+
+
+[module/memory]
+type = internal/memory
+interval = 1
+format = <ramp-used>漣 <label>
+label = %percentage_used:2%%
+ramp-used-0 = %{u-}%{-u}
+ramp-used-1 = %{u-}%{-u}
+ramp-used-2 = %{u-}%{-u}
+ramp-used-3 = %{u-}%{-u}
+ramp-used-4 = %{u-}%{-u}
+ramp-used-5 = %{u-}%{-u}
+; 60% +
+ramp-used-6 = %{u#ffff00}%{+u}
+ramp-used-7 = %{u#ffff00}%{+u}
+ramp-used-8 = %{u#ffff00}%{+u}
+; 90% +
+ramp-used-9 = %{u#ff0000}%{+u}
+
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format =  <label>
+label = %percentage:2%%
+ramp-load-0 = %{u-}%{-u}
+ramp-load-1 = %{u-}%{-u}
+ramp-load-2 = %{u-}%{-u}
+ramp-load-3 = %{u-}%{-u}
+ramp-load-4 = %{u-}%{-u}
+ramp-load-5 = %{u-}%{-u}
+; 60% +
+ramp-load-6 = %{u#ffff00}%{+u}
+ramp-load-7 = %{u#ffff00}%{+u}
+ramp-load-8 = %{u#ffff00}%{+u}
+; 90% +
+ramp-load-9 = %{u#ff0000}%{+u}
+
+
+
+[module/temperature]
+type = internal/temperature
+interval = 0.5
+thermal-zone = 0
+base-temperature = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-warn = %{u#ff0000}%{+u}<ramp> <label-warn>
+
+label = %temperature-c:2%
+label-warn = %temperature-c:2%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+
+
+[module/wired-enp3s0]
+type = internal/network
+interface = enp3s0
+interval = 2
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = 
+label-disconnected = 
+label-disconnected-underline = #ff0000
+
+
+
+[module/date]
+type = internal/date
+interval = 1
+format =  <label>
+label = %date%
+date = %d.%m.%Y
+
+
+
+[module/time]
+type = internal/date
+interval = 1
+format =  <label> 
+label = %time%
+time = %H:%M
+
+; vim:ft=dosini
