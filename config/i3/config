@@ -18,6 +18,10 @@ bindsym $mod+Shift+q kill
 
 # Start Applications
 bindsym $mod+F2 exec firefox
+bindsym Print --release exec --no-startup-id scrot-full-cb
+bindsym Shift+Print --release exec --no-startup-id scrot-full
+bindsym $mod+Print --release exec --no-startup-id scrot-select-cb
+bindsym $mod+Shift+Print --release exec --no-startup-id scrot-select
 
 # Change focus
 bindsym $mod+j         focus left

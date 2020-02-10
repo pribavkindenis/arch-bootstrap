@@ -18,6 +18,8 @@ required_packages=(
     firefox
     tree
     htop
+    scrot
+    xclip
 )
 lol_packages=( 
     screenfetch
@@ -60,6 +62,23 @@ function install_packages()
     exec_by_condition executable "Do you want to install packages? Y/n"
 }
 
+function install_bashrc()
+{
+    section "Copy dotfiles"
+    cp ./config/bash/.bashrc ~/
+    source ~/.bashrc
+}
+
+function install_scrot()
+{
+    section "Install scrot"
+    if [[ ! -d "~/.local/bin" ]]; then
+        mkdir -p ~/.local/bin
+    fi
+    cp ./config/scrot/* ~/.local/bin
+}
+
+
 
 # Main
 # ----------------------------------------
@@ -68,6 +87,8 @@ function install_packages()
 greeting
 install_pikaur
 install_packages
+install_bashrc
+install_scrot
 bash bs_git.sh
 bash bs_i3.sh
 farewell

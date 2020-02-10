@@ -1,0 +1,6 @@
+#!/bin/bash
+
+name=$(date '+%Y-%m-%d__%H:%M:%S.png')
+scrot -q 100 $name
+xclip -selection clipboard -t image/png -i $name
+rm $name
